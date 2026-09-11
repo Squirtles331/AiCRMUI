@@ -1,33 +1,48 @@
 <template>
-  <div id="home" class="g-page home">
-    <WorkCard></WorkCard>
-
-    <a-row :gutter="14" class="home__content g-mt">
-      <a-col :xs="24" :sm="24" :md="24" :lg="14" :xl="14" :xxl="14">
-        <ProjectCard class="g-mb"></ProjectCard>
-        <MessageCard class="g-mb"></MessageCard>
-      </a-col>
-      <a-col :xs="24" :sm="24" :md="24" :lg="10" :xl="10" :xxl="10">
-        <FastCard class="g-mb"></FastCard>
-        <ImageCard class="g-mb"></ImageCard>
-      </a-col>
-    </a-row>
-
-    <a-back-top :visible-height="100" target-container="#home">
-      <Icon icon="custom:backtop" :width="50" :height="50" class="backtop-icon" />
-    </a-back-top>
-  </div>
+  <GiPageLayout margin bg-transparent>
+    <div class="home-page">
+      <a-card>
+        <a-space direction="vertical" size="large" fill>
+          <div>
+            <h1>{{ greeting }}，{{ userStore.name }}</h1>
+            <p>当前登录租户：{{ userStore.userInfo.tenantId }} · {{ userStore.userInfo.departmentName || '未分配部门' }}</p>
+          </div>
+          <a-descriptions :column="1" bordered size="small">
+            <a-descriptions-item label="登录账号">{{ userStore.userInfo.username }}</a-descriptions-item>
+            <a-descriptions-item label="所属角色">{{ userStore.roles.join('、') || '无' }}</a-descriptions-item>
+            <a-descriptions-item label="权限数量">{{ userStore.permissions.length }}</a-descriptions-item>
+          </a-descriptions>
+          <a-button v-if="userStore.roles.includes('admin')" type="primary" @click="router.push('/system/user')">
+            进入系统管理
+          </a-button>
+        </a-space>
+      </a-card>
+    </div>
+  </GiPageLayout>
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
-import FastCard from './components/FastCard.vue'
-import ImageCard from './components/ImageCard.vue'
-import MessageCard from './components/MessageCard.vue'
-import ProjectCard from './components/ProjectCard.vue'
-import WorkCard from './components/WorkCard.vue'
+import { useUserStore } from '@/stores'
+import { goodTimeText } from '@/utils'
 
-defineOptions({ name: 'Home' })
+defineOptions({ name: 'HomeIndex' })
+const router = useRouter()
+const userStore = useUserStore()
+const greeting = computed(() => goodTimeText())
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.home-page {
+  width: min(720px, 100%);
+}
+
+.home-page h1 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.home-page p {
+  margin: 0;
+  color: var(--color-text-3);
+}
+</style>

@@ -14,20 +14,6 @@
         </a-button>
       </a-tooltip>
 
-      <!-- 消息通知下拉框 -->
-      <a-popover position="bottom" trigger="click">
-        <a-badge :count="9" dot>
-          <a-button size="mini" class="g-hover-btn">
-            <template #icon>
-              <icon-notification :size="18" />
-            </template>
-          </a-button>
-        </a-badge>
-        <template #content>
-          <Notice></Notice>
-        </template>
-      </a-popover>
-
       <!-- 全屏切换按钮 -->
       <a-tooltip v-if="!['xs', 'sm'].includes(breakpoint)" content="全屏切换" position="bottom">
         <a-button size="mini" class="g-hover-btn" @click="toggle">
@@ -48,20 +34,21 @@
         <a-row align="center" :wrap="false" class="header-right-bar__user">
           <!-- 管理员头像 -->
           <a-avatar :size="32">
-            <img :src="userStore.avatar" />
+            <img v-if="userStore.avatar" :src="userStore.avatar" />
+            <icon-user v-else />
           </a-avatar>
           <span class="header-right-bar__username">{{ userStore.name }}</span>
           <icon-down />
         </a-row>
 
         <template #content>
-          <a-doption v-for="item in USER_MENUS" :key="item.key" @click="item.onClick">
+          <a-doption disabled>
             <template #icon>
-              <GiIconBox :color="item.iconColor">
-                <component :is="item.icon" />
+              <GiIconBox color="primary">
+                <icon-building />
               </GiIconBox>
             </template>
-            <span>{{ item.label }}</span>
+            <span>租户 {{ userStore.userInfo.tenantId }}</span>
           </a-doption>
           <a-divider :margin="0" />
           <a-doption @click="handleLogout">
@@ -83,7 +70,6 @@ import { Button, Drawer, Message, Modal } from '@arco-design/web-vue'
 import { useFullscreen } from '@vueuse/core'
 import { useBreakpoint, useTheme } from '@/hooks'
 import { useAppStore, useUserStore } from '@/stores'
-import Notice from './Notice.vue'
 import SettingDrawerPanel from './SettingDrawerPanel.vue'
 
 /** 组件名称 */
@@ -102,33 +88,6 @@ const { breakpoint } = useBreakpoint()
 
 /** 全屏控制 */
 const { isFullscreen, toggle } = useFullscreen()
-
-/** 用户菜单配置 */
-const USER_MENUS = [
-  {
-    key: 'user',
-    label: '个人中心',
-    icon: 'icon-user',
-    iconColor: 'primary',
-    onClick: () => router.push('/system/account')
-  },
-  {
-    key: 'github',
-    label: '项目地址',
-    icon: 'icon-github',
-    iconColor: 'success',
-    onClick: () => window.open('https://gitee.com/lin0716/gi-demo')
-  },
-  {
-    key: 'password',
-    label: '修改密码',
-    icon: 'icon-unlock',
-    iconColor: 'primary',
-    onClick: () => {
-      Message.info('修改密码')
-    }
-  }
-]
 
 /** 恢复默认项目配置 */
 const handleResetSettings = () => {

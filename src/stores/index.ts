@@ -2,7 +2,6 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 export * from './useAppStore'
-export * from './useDictStore'
 export * from './useMenuBadgeStore'
 export * from './useRouteStore'
 export * from './useTabsStore'

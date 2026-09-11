@@ -1,15 +1,16 @@
-import { getBaseApi } from '@/apis/base'
+import http from '@/utils/http'
 
 export interface ListItem {
   id: string
   name: string
-  sort: number
-  status: Status
-  createTime: string
-  parentId: string
+  code: string
+  path: string
+  status: number
+  createdAt: string
+  parentId?: string
   children?: ListItem[]
-  description: string
 }
 
-/** 部门模块 */
-export const baseAPI = getBaseApi<ListItem>({ baseUrl: '/system/dept' })
+export function getDepartmentList() {
+  return http.get<ListItem[]>('/administration/departments')
+}

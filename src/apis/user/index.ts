@@ -4,7 +4,7 @@ import http from '@/utils/http'
 export type * from './type'
 
 /** 登录 */
-export function login(data: { tenantId: string, username: string, password: string }) {
+export function login(data: { tenantId: number | undefined, username: string, password: string }) {
   return http.post<T.Login>('/auth/login', data)
 }
 

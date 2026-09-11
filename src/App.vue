@@ -9,15 +9,12 @@
 
 <script setup lang="ts">
 import { useTheme } from '@/hooks'
-import { useDictStore } from '@/stores'
 
 defineOptions({ name: 'App' })
 
 const { initThemeColor } = useTheme()
 initThemeColor()
 
-const dictStore = useDictStore()
-dictStore.getDictData()
 </script>
 
 <style lang="scss" scoped>

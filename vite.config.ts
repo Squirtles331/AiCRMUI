@@ -8,7 +8,6 @@ import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig, loadEnv } from 'vite'
 import vitePluginCompression from 'vite-plugin-compression'
-import { viteMockServe } from 'vite-plugin-mock'
 import VueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig(({ mode }) => {
@@ -87,18 +86,6 @@ export default defineConfig(({ mode }) => {
         autoInstall: true,
         defaultClass: 'iconify-icon',
         defaultStyle: 'vertical-align: middle;'
-      }),
-      viteMockServe({
-        mockPath: 'mock', // 目录位置
-        logger: true, //  是否在控制台显示请求日志
-        supportTs: true, // 是否读取ts文件模块
-        localEnabled: env.VITE_USE_MOCK === 'true',
-        prodEnabled: env.VITE_USE_MOCK === 'true',
-        // 这样可以控制关闭mock的时候不让mock打包到最终代码内
-        injectCode: `
-          import { setupProdMockServer } from '../mock/index';
-          setupProdMockServer();
-        `
       }),
       // Gzip 压缩配置
       vitePluginCompression({

@@ -1,6 +1,6 @@
 import type * as T from '@/apis/system/role'
 import { ref } from 'vue'
-import { baseAPI } from '@/apis/system/role'
+import { getRoleList as getRoleListApi } from '@/apis/system/role'
 
 /** 角色模块 */
 export function useRole() {
@@ -10,8 +10,8 @@ export function useRole() {
   const getRoleList = async () => {
     try {
       loading.value = true
-      const res = await baseAPI.getList({ page: 1, size: 99 })
-      roleList.value = res.data.records.filter((i) => i.status === '1')
+      const res = await getRoleListApi({ page: 1, size: 99 })
+      roleList.value = res.data.records.filter((i) => i.status === 1)
       total.value = res.data.total
     } finally {
       loading.value = false

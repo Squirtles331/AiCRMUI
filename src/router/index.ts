@@ -52,10 +52,10 @@ const homeRoute: RouteRecordRaw = {
   children: [
     {
       path: '/home',
-      component: () => import('@/views/crm/dashboard/index.vue'),
+      component: () => import('@/views/home/index.vue'),
       name: 'HomeIndex',
       meta: {
-        title: '工作台',
+        title: '首页',
         icon: 'icon-park-outline:workbench',
         affix: true,
         hidden: false,

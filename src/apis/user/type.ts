@@ -15,7 +15,7 @@ export interface UserInfo {
 export interface Login {
   accessToken: string
   tokenType: string
-  expiresIn: number
+  expiresInSeconds: number
 }
 
 export interface UserRouteItem {

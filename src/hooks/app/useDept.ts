@@ -1,7 +1,7 @@
 import type * as T from '@/apis/system/dept'
 import { ref } from 'vue'
 import { mapTree } from 'xe-utils'
-import { baseAPI } from '@/apis/system/dept'
+import { getDepartmentList } from '@/apis/system/dept'
 
 /** 部门模块 */
 export function useDept(options?: { onSuccess?: () => void }) {
@@ -11,10 +11,10 @@ export function useDept(options?: { onSuccess?: () => void }) {
   const getDeptList = async () => {
     try {
       loading.value = true
-      const res = await baseAPI.getList()
+      const res = await getDepartmentList()
       deptList.value = mapTree(res.data, (i) => {
         if (i.children?.length) {
-          i.children = i.children.filter((i) => i.status === '1')
+          i.children = i.children.filter((i) => i.status === 1)
         }
         return i
       })

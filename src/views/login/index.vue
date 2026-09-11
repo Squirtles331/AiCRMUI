@@ -29,11 +29,11 @@
               <a-form ref="formRef" class="login__form" size="large" :model="form" :rules="rules" layout="vertical"
                 :label-col-props="{ style: { marginBottom: '0' } }" @submit="onSubmit">
                 <a-form-item field="tenantId" label="租户 ID">
-                  <a-input v-model="form.tenantId" placeholder="请输入租户 ID" allow-clear autocomplete="organization">
+                  <a-input-number v-model="form.tenantId" placeholder="请输入租户 ID" :min="1" :precision="0" hide-button class="w-full">
                     <template #prefix>
                       <icon-building :stroke-width="3" class="login__input-icon" />
                     </template>
-                  </a-input>
+                  </a-input-number>
                 </a-form-item>
                 <a-form-item field="username" label="账号">
                   <a-input v-model="form.username" placeholder="请输入账号" allow-clear autocomplete="username">
@@ -85,7 +85,7 @@ const tabsStore = useTabsStore()
 const year = new Date().getFullYear()
 
 const form = reactive({
-  tenantId: '',
+  tenantId: undefined as number | undefined,
   username: '',
   password: ''
 })
@@ -119,8 +119,6 @@ async function login() {
       query: { ...othersQuery }
     })
     Message.success('登录成功')
-  } catch (error) {
-    Message.error((error as Error).message || '登录失败，请重试')
   } finally {
     setLoading(false)
   }

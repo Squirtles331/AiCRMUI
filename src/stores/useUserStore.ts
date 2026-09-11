@@ -6,7 +6,7 @@ import { computed, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { getUserInfo as getUserInfoApi, login as loginApi, logout as logoutApi } from '@/apis/user'
 import { resetRouter } from '@/router'
-import { buildCrmRoutes } from '@/router/crm-routes'
+import { buildAppRoutes } from '@/router/app-routes'
 import { clearToken, getToken, setToken } from '@/utils/auth'
 import { isHttp } from '@/utils/validate'
 import { useRouteStore } from './useRouteStore'
@@ -107,11 +107,9 @@ const storeSetup = () => {
   const generateRoutes = async (): Promise<boolean> => {
     try {
       await fetchUserInfo()
-      routeStore.setRoutes(buildCrmRoutes(userInfo.permissions))
+      routeStore.setRoutes(buildAppRoutes(userInfo))
       routeStore.asyncRoutes.forEach((item) => {
-        if (!isHttp(item.path)) {
-          router.addRoute(item)
-        }
+        if (!isHttp(item.path)) router.addRoute(item)
       })
       return true
     } catch (error) {

@@ -1,24 +1,18 @@
-import { getBaseApi } from '@/apis/base'
+import http from '@/utils/http'
 
 export interface ListItem {
   id: string
-  createUserString: string
-  createTime: string
-  disabled: boolean
-  deptId: string
-  deptName: string
+  createdAt: string
+  departmentId: string
+  departmentName: string
   username: string
-  nickname: string
-  gender: Gender
-  avatar: string
+  name: string
   email: string
-  phone: string
-  status: Status
-  type: 1 | 2
-  description: string
-  roleIds: string[]
-  roleNames: string[]
+  mobile: string
+  status: number
+  roleNames: string
 }
 
-/** 用户模块 */
-export const baseAPI = getBaseApi<ListItem>({ baseUrl: '/system/user' })
+export function getUserList(params: Pagination & { keyword?: string, status?: number }) {
+  return http.get<PageRes<ListItem[]>>('/administration/users', params)
+}
