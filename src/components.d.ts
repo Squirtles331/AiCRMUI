@@ -12,6 +12,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AAlert: typeof import('@arco-design/web-vue')['Alert']
     AAvatar: typeof import('@arco-design/web-vue')['Avatar']
     ABadge: typeof import('@arco-design/web-vue')['Badge']
     ABreadcrumb: typeof import('@arco-design/web-vue')['Breadcrumb']
@@ -29,6 +30,8 @@ declare module 'vue' {
     ADropdown: typeof import('@arco-design/web-vue')['Dropdown']
     AForm: typeof import('@arco-design/web-vue')['Form']
     AFormItem: typeof import('@arco-design/web-vue')['FormItem']
+    AGrid: typeof import('@arco-design/web-vue')['Grid']
+    AGridItem: typeof import('@arco-design/web-vue')['GridItem']
     AInput: typeof import('@arco-design/web-vue')['Input']
     AInputNumber: typeof import('@arco-design/web-vue')['InputNumber']
     AInputPassword: typeof import('@arco-design/web-vue')['InputPassword']
@@ -38,6 +41,7 @@ declare module 'vue' {
     ALayoutSider: typeof import('@arco-design/web-vue')['LayoutSider']
     AMenu: typeof import('@arco-design/web-vue')['Menu']
     AMenuItem: typeof import('@arco-design/web-vue')['MenuItem']
+    AModal: typeof import('@arco-design/web-vue')['Modal']
     APopover: typeof import('@arco-design/web-vue')['Popover']
     ARow: typeof import('@arco-design/web-vue')['Row']
     AScrollbar: typeof import('@arco-design/web-vue')['Scrollbar']
@@ -47,6 +51,7 @@ declare module 'vue' {
     ASubMenu: typeof import('@arco-design/web-vue')['SubMenu']
     ASwitch: typeof import('@arco-design/web-vue')['Switch']
     ATable: typeof import('@arco-design/web-vue')['Table']
+    ATableColumn: typeof import('@arco-design/web-vue')['TableColumn']
     ATabPane: typeof import('@arco-design/web-vue')['TabPane']
     ATabs: typeof import('@arco-design/web-vue')['Tabs']
     ATag: typeof import('@arco-design/web-vue')['Tag']
@@ -81,6 +86,7 @@ declare module 'vue' {
 
 // For TSX support
 declare global {
+  const AAlert: typeof import('@arco-design/web-vue')['Alert']
   const AAvatar: typeof import('@arco-design/web-vue')['Avatar']
   const ABadge: typeof import('@arco-design/web-vue')['Badge']
   const ABreadcrumb: typeof import('@arco-design/web-vue')['Breadcrumb']
@@ -98,6 +104,8 @@ declare global {
   const ADropdown: typeof import('@arco-design/web-vue')['Dropdown']
   const AForm: typeof import('@arco-design/web-vue')['Form']
   const AFormItem: typeof import('@arco-design/web-vue')['FormItem']
+  const AGrid: typeof import('@arco-design/web-vue')['Grid']
+  const AGridItem: typeof import('@arco-design/web-vue')['GridItem']
   const AInput: typeof import('@arco-design/web-vue')['Input']
   const AInputNumber: typeof import('@arco-design/web-vue')['InputNumber']
   const AInputPassword: typeof import('@arco-design/web-vue')['InputPassword']
@@ -107,6 +115,7 @@ declare global {
   const ALayoutSider: typeof import('@arco-design/web-vue')['LayoutSider']
   const AMenu: typeof import('@arco-design/web-vue')['Menu']
   const AMenuItem: typeof import('@arco-design/web-vue')['MenuItem']
+  const AModal: typeof import('@arco-design/web-vue')['Modal']
   const APopover: typeof import('@arco-design/web-vue')['Popover']
   const ARow: typeof import('@arco-design/web-vue')['Row']
   const AScrollbar: typeof import('@arco-design/web-vue')['Scrollbar']
@@ -116,6 +125,7 @@ declare global {
   const ASubMenu: typeof import('@arco-design/web-vue')['SubMenu']
   const ASwitch: typeof import('@arco-design/web-vue')['Switch']
   const ATable: typeof import('@arco-design/web-vue')['Table']
+  const ATableColumn: typeof import('@arco-design/web-vue')['TableColumn']
   const ATabPane: typeof import('@arco-design/web-vue')['TabPane']
   const ATabs: typeof import('@arco-design/web-vue')['Tabs']
   const ATag: typeof import('@arco-design/web-vue')['Tag']

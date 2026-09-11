@@ -6,9 +6,10 @@
 
 <script setup lang="ts">
 import type { FormInstance } from '@arco-design/web-vue'
+import type { ProductItem } from '@/apis/config/catalog'
 import type { FormColumnItem } from '@/components/GiForm/type'
 import { Message } from '@arco-design/web-vue'
-import { addPriceItem, type ProductItem } from '@/apis/config/catalog'
+import { addPriceItem } from '@/apis/config/catalog'
 import GiForm from '@/components/GiForm/GiForm.vue'
 
 const props = defineProps<{ products: ProductItem[] }>()

@@ -13,9 +13,10 @@
 
 <script setup lang="tsx">
 import type { TableColumnData } from '@arco-design/web-vue'
-import dayjs from 'dayjs'
+import type { PriceListItem } from '@/apis/config/catalog'
 import { Button, Tag } from '@arco-design/web-vue'
-import { getPriceList, type PriceListItem } from '@/apis/config/catalog'
+import dayjs from 'dayjs'
+import { getPriceList } from '@/apis/config/catalog'
 import { useTable } from '@/hooks'
 import { useUserStore } from '@/stores'
 import CreatePriceListModal from './CreatePriceListModal.vue'

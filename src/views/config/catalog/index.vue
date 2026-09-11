@@ -1,5 +1,5 @@
 <template>
-  <GiPageLayout :size="'350px'" collapsed>
+  <GiPageLayout size="350px" collapsed>
     <template #left>
       <GiTable title="产品分类" row-key="id" :data="categories" :columns="categoryColumns" :loading="categoryLoading"
         :pagination="false" :scroll="{ y: '100%' }" @refresh="loadCategories">
@@ -21,8 +21,9 @@
 
 <script setup lang="tsx">
 import type { TableColumnData } from '@arco-design/web-vue'
+import type { CategoryItem } from '@/apis/config/catalog'
 import { Tag } from '@arco-design/web-vue'
-import { getCategoryList, getProductList, type CategoryItem } from '@/apis/config/catalog'
+import { getCategoryList, getProductList } from '@/apis/config/catalog'
 import { useTable } from '@/hooks'
 import { useUserStore } from '@/stores'
 import CreateCategoryModal from './CreateCategoryModal.vue'

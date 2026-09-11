@@ -85,9 +85,9 @@ const tabsStore = useTabsStore()
 const year = new Date().getFullYear()
 
 const form = reactive({
-  tenantId: undefined as number | undefined,
-  username: '',
-  password: ''
+  tenantId: 1 as number | undefined,
+  username: 'admin',
+  password: 'admin'
 })
 
 const rules: FormInstance['rules'] = {

@@ -14,7 +14,6 @@ defineOptions({ name: 'App' })
 
 const { initThemeColor } = useTheme()
 initThemeColor()
-
 </script>
 
 <style lang="scss" scoped>

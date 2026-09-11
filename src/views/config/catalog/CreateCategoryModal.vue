@@ -6,9 +6,10 @@
 
 <script setup lang="ts">
 import type { FormInstance } from '@arco-design/web-vue'
+import type { CategoryItem } from '@/apis/config/catalog'
 import type { FormColumnItem } from '@/components/GiForm/type'
 import { Message } from '@arco-design/web-vue'
-import { createCategory, type CategoryItem } from '@/apis/config/catalog'
+import { createCategory } from '@/apis/config/catalog'
 import GiForm from '@/components/GiForm/GiForm.vue'
 
 const props = defineProps<{ categories: CategoryItem[] }>()

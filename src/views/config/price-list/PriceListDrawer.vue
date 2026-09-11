@@ -19,8 +19,9 @@
 
 <script setup lang="tsx">
 import type { TableColumnData } from '@arco-design/web-vue'
+import type { PriceItem, PriceListItem, ProductItem } from '@/apis/config/catalog'
 import { Message, Modal, Tag } from '@arco-design/web-vue'
-import { getPriceItems, getProductList, publishPriceList, type PriceItem, type PriceListItem, type ProductItem } from '@/apis/config/catalog'
+import { getPriceItems, getProductList, publishPriceList } from '@/apis/config/catalog'
 import { useUserStore } from '@/stores'
 import AddPriceItemModal from './AddPriceItemModal.vue'
 
